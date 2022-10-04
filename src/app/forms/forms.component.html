@@ -1,0 +1,50 @@
+<p>forms works!</p>
+
+<!-- TEMPLATE DRIVEN FORM -->
+<!-- <label>email </label>
+<input
+  type="email"
+  name="email"
+  ngModel
+  #email="ngModel"
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+  required
+/>
+<br />
+<div *ngIf="email.touched">
+  <p *ngIf="email.errors?.['required']">Email is a required field!</p>
+  <p *ngIf="email.errors?.['pattern']">This is not a valid Email!!!</p>
+</div> -->
+
+<!-- REACTIVE FORM -->
+
+<form [formGroup]="userForm">
+  <p>ANGULAR REACTIVE FORM</p>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <label>userName</label>
+        <input formControlName="userName" type="text" />
+      </div>
+      <br />
+      <span class="red" *ngIf="userForm.valid?.['minLength']">
+        min 2 charactors must
+      </span>
+      <p class="red" *ngIf="userForm.valid?.['maxLength']">
+        max only 10 charactors allowed
+      </p>
+      <p class="red" *ngIf="userForm.valid?.['required']">
+        userName required/p>
+      </p>
+     
+      <div class="col">
+        <label>password </label>
+        <input formControlName="password" type="text" />
+      </div>
+      <br />
+      <button type="submit" class="" (click)="showFormDetails()">Submit</button>
+    </div>
+    <br />
+    <!-- <pre><code>{{userForm.value | json}}</code></pre> -->
+  </div>
+</form>

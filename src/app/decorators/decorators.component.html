@@ -1,0 +1,12 @@
+<p>decorators works!</p>
+<div class="child">
+  <h2>Child Component</h2>
+  <p>
+    My Name : <strong>{{ name }}</strong>
+  </p>
+  <label for="name-input">Add Name </label>
+  <input type="text" id="name-input" #newName />
+  <button type="submit" (click)="addNewName(newName.value); newName.value = ''">
+    Add
+  </button>
+</div>

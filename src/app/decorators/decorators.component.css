@@ -1,9 +1,9 @@
-.parent {
+.child {
   border: 1px solid gray;
   margin: 20px;
   padding: 20px;
 }
 h2 {
   text-align: center;
-  color: blue;
+  color: green;
 }
