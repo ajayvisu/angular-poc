@@ -22,6 +22,6 @@ export class FormsComponent implements OnInit {
 
   showFormDetails() {
     console.log(this.userForm);
-    console.log('valid:', this.userForm.valid);
+    console.log('valid:', this.userForm.errors);
   }
 }
