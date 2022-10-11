@@ -7,21 +7,41 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./forms.component.css'],
 })
 export class FormsComponent implements OnInit {
+  userForm: FormGroup;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      address: new FormGroup({
+        address1: new FormControl(),
+        state: new FormControl(),
+      }),
+      check: new FormControl(),
+    });
+  }
 
-  userForm: FormGroup = new FormGroup({
-    userName: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-      Validators.maxLength(10),
-    ]),
-    password: new FormControl(1234),
-  });
+  setvalue() {
+    this.userForm.setValue({
+      email: 'saha@gmail.com',
+      password: 'sahana',
+      check: true,
+      address: {
+        address1: 'sdf',
+        state: 'adsff',
+      },
+    });
+  }
 
-  showFormDetails() {
+  patchvalue() {
+    this.userForm.patchValue({
+      email: 'sahana@gmail.com',
+    });
+  }
+
+  onSubmit() {
     console.log(this.userForm);
-    console.log('valid:', this.userForm.errors);
+    // this.userForm.reset();
   }
 }

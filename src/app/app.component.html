@@ -11,4 +11,10 @@
 </div> -->
 
 <!-- TEMPLATE DRIVEN FORM -->
-<app-forms></app-forms>
+<!-- <app-forms></app-forms> -->
+
+<!-- HOOKS -->
+<div *ngIf="show">
+  <app-hooks [name]="hookName"></app-hooks>
+</div>
+<button (click)="toggle()">SHOW/HIDE</button>

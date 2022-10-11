@@ -18,35 +18,115 @@
 
 <!-- REACTIVE FORM -->
 
-<form [formGroup]="userForm">
+<!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <p>ANGULAR REACTIVE FORM</p>
   <div class="container">
     <div class="row">
       <div class="col">
         <label>userName</label>
-        <input formControlName="userName" type="text" />
+        <input class="form-control" formControlName="userName" type="text" />
+        <div
+          *ngIf="
+            !userForm.get('userName')?.valid &&
+            userForm.get('userName')?.touched
+          "
+        >
+          Please enter a valid user name
+        </div>
       </div>
       <br />
-      <span class="red" *ngIf="userForm.valid?.['minLength']">
-        min 2 charactors must
-      </span>
-      <p class="red" *ngIf="userForm.valid?.['maxLength']">
-        max only 10 charactors allowed
-      </p>
-      <p class="red" *ngIf="userForm.valid?.['required']">
-        userName required/p>
-      </p>
-     
+
       <div class="col">
         <label>password </label>
         <input formControlName="password" type="text" />
       </div>
       <br />
-      <button type="submit" class="" (click)="showFormDetails()">Submit</button>
+      <button type="submit" class="">Submit</button>
     </div>
     <br />
-    <!-- <pre><code>{{userForm.value | json}}</code></pre> -->
+    <pre><code>{{userForm.value | json}}</code></pre>
   </div>
-</form>
+</form> -->
 
+<div class="card" style="width: 50rem; height: auto">
+  <div class="card-body">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="email"
+        />
+        <div
+          *ngIf="
+            !userForm.get('email')?.valid && userForm.get('email')?.touched
+          "
+        >
+          please enter email
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          formControlName="password"
+        />
+      </div>
 
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="exampleCheck1"
+          formControlName="check"
+        />
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+
+      <div formGroupName="address">
+        <div class="mb-3">
+          <label for="exampleInputPassword13" class="form-label"
+            >address 1</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPassword13"
+            formControlName="address1"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword12" class="form-label">state</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPassword12"
+            formControlName="state"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!userForm.valid"
+      >
+        Submit
+      </button>
+
+      <button type="button" class="btn btn-primary" (click)="setvalue()">
+        Set Value
+      </button>
+
+      <button type="button" class="btn btn-primary" (click)="patchvalue()">
+        Patch Value
+      </button>
+    </form>
+  </div>
+</div>

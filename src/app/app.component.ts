@@ -6,13 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'angular-second-app';
-  
-  currentName = 'AjayVisu';
+  title = 'angular-poc';
 
-  names = ['Aj'];
+  // DECORATORS
+  // currentName = 'AjayVisu';
 
-  addName(newName: string) {
-    this.names.push(newName);
+  // names = ['Aj'];
+
+  // addName(newName: string) {
+  //   this.names.push(newName);
+  // }
+
+  // HOOKS
+  hookName = 'LifeCycle';
+
+  show = false;
+
+  toggle() {
+    this.show = !this.show;
   }
 }
